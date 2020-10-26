@@ -3,11 +3,12 @@ Library  OperatingSystem
 
 *** Variables ***
 ${output_directory} =  Outputs
-${directory_1} =  first directory
-${directory_2} =  second directory
-${file_1} =  first file.txt
-${file_2} =  second file.txt
-${file_3} =  third file.txt
+${directory_1} =  first_directory
+${directory_2} =  second_directory
+${file_1} =  first_file.txt
+${file_2} =  second_file.txt
+${file_3} =  third_file.txt
+
 
 *** Keywords ***
 Create the Base Directory

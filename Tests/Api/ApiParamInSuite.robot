@@ -25,4 +25,4 @@ Passing Id To Posts Handler
     ${resp} =  Get Request  json_place  /posts/${user_id}
     Status Should Be  ${status}  ${resp}
     ${size} =  Get Length  ${resp.json()}
-    Dictionary Should Contain Value  ${resp.json()}  ${expected}
+    Dictionary ${resp.json()} should contain ${expected}

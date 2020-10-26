@@ -1,9 +1,6 @@
 *** Settings ***
-Documentation  These are some file & directory tests
-Resource  ../Resources/OperatingSystem/OS.robot
-
-
-*** Variables ***
+Documentation  Создание директорий и работа с файлами
+Resource  OS.robot
 
 
 *** Test Cases ***

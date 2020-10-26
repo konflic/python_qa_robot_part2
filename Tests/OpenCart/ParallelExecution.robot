@@ -6,13 +6,12 @@ Test Setup    Open Browser    NONE    ${BROWSER}
 Test Teardown    Close Browser
 
 # Распаралеливание тестов
-# pabot --processes 3 --outputdir Results Tests/DBWeb/*.robot
-# --testlevelsplit [Dir with tests]
-# https://pabot.org/PabotLib.html
+# pabot --processes 3 --outputdir Results Tests/OpenCart/*.robot - Распаралеливание по сьютам
+# pabot --testlevelsplit --processes 3 --outputdir Results Tests/OpenCart/*.robot - Распаралеливание по сьютам
 
 *** Variables ***
 # C переменными уже можно работать через опцию -v
-${BROWSER}    opera
+${BROWSER}    chrome
 ${REQUEST}    hello
 
 

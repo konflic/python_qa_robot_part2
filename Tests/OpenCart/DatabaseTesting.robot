@@ -1,14 +1,13 @@
 *** Settings ***
-Library  SeleniumLibrary
-Library  DatabaseLibrary
 Library  String
 
-Resource  ../../Resources/PageObjects/OpenCart/AdminPage.robot
+Resource  ../../PageObjects/AdminPage.robot
+Resource  ../../Resources/DataBase.robot
 
 Suite Setup  Connect To Database  pymysql  ${DBName}  ${DBUser}  ${DBPass}  ${DBHost}  ${DBPort}
 Suite Teardown  Disconnect From Database
 
-Test Setup  Open Browser  browser=chrome  options=add_argument("--ignore-certificate-errors")
+Test Setup  Open Browser  browser=chrome  options=add_argument("--ignore-certificate-errors");add_argument("--start-maximized")
 Test Teardown  Close Browser
 
 
@@ -18,7 +17,7 @@ ${DBUser}  bn_opencart
 ${DBPass}
 ${DBHost}  127.0.0.1
 ${DBPort}  3306
-@{OPENCART_ADMIN} =  user  bitnami1
+@{OPENCART_ADMIN} =  user  bitnami
 ${BASE_URL}  localhost
 ${TEST_PRODUCT_NAME}  TestProduct
 
@@ -33,7 +32,7 @@ Add Product To Catalog With Db Validation
     Go To  http://${BASE_URL}/admin/
     AdminPage.Login With  ${OPENCART_ADMIN}
     AdminPage.Add Product To Catalog  ${TEST_PRODUCT_NAME}  TestMeta  ${TEST_PRODUCT_NAME}
-    Wait Until Keyword Succeeds  3 sec  1 sec  AdminPage.Check Product In Database  ${TEST_PRODUCT_NAME}
+    Wait Until Keyword Succeeds  3 sec  1 sec  Check Product In Database  ${TEST_PRODUCT_NAME}
 
 
 Remove Product To Catalog With Db Validation
@@ -44,4 +43,4 @@ Remove Product To Catalog With Db Validation
     Go To  http://${BASE_URL}/admin/
     AdminPage.Login With  ${OPENCART_ADMIN}
     AdminPage.Remove Product From Catalog With Filter  ${product_name}
-    Wait Until Keyword Succeeds  3 sec  1 sec  AdminPage.Check Product Not In Database  ${product_name}
+    Wait Until Keyword Succeeds  3 sec  1 sec  Check Product Not In Database  ${product_name}

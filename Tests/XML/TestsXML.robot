@@ -1,9 +1,9 @@
 *** Settings ***
-Documentation  These are some XML tests
-Resource  ../Resources/XML/Breakfast_Menu.robot
+Documentation  Примеры работы с XML
+Resource  Resource.robot
 
 # Many ways to run:
-# robot -d results/xml tests/XML_Tests.robot
+# robot -d results/xml tests/TestsXML.robot
 # robot -d results/xml -i XML tests
 # robot -d results tests
 

@@ -1,6 +1,8 @@
 from robot.api import logger
+from robot.api.deco import keyword
 
 
+@keyword('Dictionary ${dic} should contain ${value}')
 def dictionary_should_contain_value(dic, value):
     """
     Dictionary should contain given value on the first level of keys

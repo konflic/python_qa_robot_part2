@@ -10,7 +10,7 @@ ${JSONPLACEHOLDER}  https://jsonplaceholder.typicode.com
 
 
 *** Test Cases ***
-Posts Handler
+Test Posts Handler
     [Template]  Passing Id To Posts Handler
     1  1  200
     100  100  200
@@ -18,7 +18,7 @@ Posts Handler
     0   EMPTY  404
 
 
-Comments Handler
+Test Comments Handler
     [Template]  Test Comments Get Handle
     1  1  200
     2  2  200
@@ -34,7 +34,7 @@ Passing Id To Posts Handler
     ${resp} =  Get Request  json_place  /posts/${user_id}
     Status Should Be  ${status}  ${resp}
     ${resp_json} =  Set Variable  ${resp.json()}
-    Dictionary Should Contain Value  ${resp_json}  ${expected_id}
+    Dictionary ${resp_json} should contain ${expected_id}
 
 
 Test Comments Get Handle
@@ -44,5 +44,5 @@ Test Comments Get Handle
     Status Should Be  ${status}  ${resp}
     ${resp_json} =  Set Variable  ${resp.json()}
     FOR  ${item}  IN  @{resp_json}
-        Dictionary Should Contain Value  ${item}  ${post_id}
+        Dictionary ${item} should contain ${post_id}
     END
