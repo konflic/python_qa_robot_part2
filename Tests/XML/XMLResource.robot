@@ -1,26 +1,23 @@
 *** Settings ***
 Library  XML
 
+
 *** Variables ***
 ${XML_MENU_PATH} =  Data/XML/menu.xml
 ${EXPECTED_MENU_COUNT} =  1
 ${EXPECTED_FOOD_COUNT} =  5
 
+
 *** Keywords ***
-Should be one menu in the file
-    # since we're passing the file name with no element, we get
-    # a count of how many elements are in the file
-    ${menu_count} =  Get Element Count  ${XML_MENU_PATH}
-    Should Be Equal As Numbers  ${menu_count}  ${EXPECTED_MENU_COUNT}
-
-Verify Menu Name
+Verify Root Element Name
+    [Arguments]  ${expected_name}
     ${root} =  Parse XML  ${XML_MENU_PATH}
-    Should Be Equal  ${root.tag}  breakfast_menu
+    Should Be Equal  ${root.tag}  ${expected_name}
 
-Verify Food Count
-    # This time, we pass the element name we want to count along with the file name
-    ${food_count} =  Get Element Count  ${XML_MENU_PATH}  food
-    Should Be Equal As Numbers  ${food_count}  ${EXPECTED_FOOD_COUNT}
+Verify Elements Count
+    [Arguments]  ${target_element}  ${expected_amount}
+    ${food_count} =  Get Element Count  ${XML_MENU_PATH}  ${target_element}
+    Should Be Equal As Integers  ${food_count}  ${expected_amount}
 
 Verify First Food Name
     # I would have thought I need to pass breakfast_menu/food[1]/name
