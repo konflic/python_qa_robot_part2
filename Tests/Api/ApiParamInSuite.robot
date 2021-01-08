@@ -22,7 +22,6 @@ Thousand Invalid  1000  EMPTY  404
 Passing Id To Posts Handler
     [Arguments]  ${user_id}  ${expected}  ${status}
     Create Session  json_place  url=${JSONPLACEHOLDER}  disable_warnings=1
-    ${resp} =  Get Request  json_place  /posts/${user_id}
-    Status Should Be  ${status}  ${resp}
+    ${resp} =  GET On Session  json_place  /posts/${user_id}  expected_status=${status}
     ${size} =  Get Length  ${resp.json()}
     Dictionary ${resp.json()} should contain ${expected}

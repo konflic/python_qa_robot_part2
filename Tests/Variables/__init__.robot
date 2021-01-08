@@ -1,2 +1,2 @@
 *** Variables ***
-${GLOBAL1} =  I am global variable 1
+${SOME_GLOBAL_DATA} =  I am global variable 1

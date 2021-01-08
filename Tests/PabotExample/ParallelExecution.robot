@@ -5,9 +5,9 @@ Documentation    Это пример теста написанного с пом
 Test Setup    Open Browser    NONE    ${BROWSER}
 Test Teardown    Close Browser
 
-# Распаралеливание тестов
-# pabot --processes 3 --outputdir Results Tests/OpenCart/*.robot - Распаралеливание по сьютам
-# pabot --testlevelsplit --processes 3 --outputdir Results Tests/OpenCart/*.robot - Распаралеливание по сьютам
+# Parallel launch
+# pabot --processes 3 --outputdir Results Tests/OpenCart/*.robot - by suite
+# pabot --testlevelsplit --processes 3 --outputdir Results Tests/OpenCart/*.robot - by test
 
 *** Variables ***
 # C переменными уже можно работать через опцию -v

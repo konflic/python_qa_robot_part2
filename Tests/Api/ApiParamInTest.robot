@@ -31,8 +31,7 @@ Test Comments Handler
 Passing Id To Posts Handler
     [Arguments]  ${user_id}  ${expected_id}  ${status}
     Create Session  json_place  url=${JSONPLACEHOLDER}  disable_warnings=1
-    ${resp} =  Get Request  json_place  /posts/${user_id}
-    Status Should Be  ${status}  ${resp}
+    ${resp} =  GET On Session  json_place  /posts/${user_id}  expected_status=${status}
     ${resp_json} =  Set Variable  ${resp.json()}
     Dictionary ${resp_json} should contain ${expected_id}
 
@@ -40,8 +39,7 @@ Passing Id To Posts Handler
 Test Comments Get Handle
     [Arguments]  ${post_id}  ${expected_id}  ${status}
     Create Session  json_place  url=${JSONPLACEHOLDER}  disable_warnings=1
-    ${resp} =  Get Request  json_place  /posts/${post_id}/comments
-    Status Should Be  ${status}  ${resp}
+    ${resp} =  GET On Session  json_place  /posts/${post_id}/comments  expected_status=${status}
     ${resp_json} =  Set Variable  ${resp.json()}
     FOR  ${item}  IN  @{resp_json}
         Dictionary ${item} should contain ${post_id}
