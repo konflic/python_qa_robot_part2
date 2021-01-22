@@ -15,7 +15,7 @@ Test Posts Handler
     1  1  200
     100  100  200
     1000  EMPTY  404
-    0   EMPTY  404
+    0  EMPTY  404
 
 
 Test Comments Handler
