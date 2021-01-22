@@ -11,7 +11,7 @@ Test Template  Passing Id To Posts Handler
 ${JSONPLACEHOLDER}  https://jsonplaceholder.typicode.com
 
 
-*** Test Cases ***  user_id  expected  status
+*** Test Cases ***
 One Valid  1  1  200
 Two Valid  2  1  200
 Hundred Valid  100  100  200
